@@ -3,7 +3,7 @@ const router = express.Router();
 
 const User = require('../model/userModel');
 
-router.get('/', (req, res)=>{
+router.get('/users', (req, res)=>{
     User.find()
         .then(user => {
             res.json(user);
@@ -11,7 +11,7 @@ router.get('/', (req, res)=>{
         .catch(err => console.log(err));
 });
 
-router.post('/', (req, res)=>{
+router.post('/user', (req, res)=>{
     const data = {
         name: req.body.name,
         email: req.body.email,
@@ -23,7 +23,7 @@ router.post('/', (req, res)=>{
         .catch(err=> console.log(err));
 });
 
-router.delete('/:id', (req, res)=>{
+router.delete('/user/:id', (req, res)=>{
     User.findByIdAndDelete(req.params.id)
         .then(()=>{
             res.json({data: true})
@@ -31,7 +31,7 @@ router.delete('/:id', (req, res)=>{
         .catch((err)=>res.json(err));
 });
 
-router.put('/:id',(req, res) => {
+router.put('/user/:id',(req, res) => {
     User.findByIdAndUpdate( req.params.id ,{ name: req.body.name, email: req.body.email },{ new: true })
         .then(user => {
             if(err) {
@@ -41,7 +41,7 @@ router.put('/:id',(req, res) => {
         })
         .catch(err=> res.json(err))
 });
-router.get('/:id', (req,res)=>{
+router.get('/user/:id', (req,res)=>{
     User.findById(req.params.id)
         .then(user => {
             if(user) res.json(user);
