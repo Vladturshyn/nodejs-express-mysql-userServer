@@ -3,7 +3,7 @@ const router = express.Router();
 
 const User = require('../model/userModel');
 
-router.get('/users', (req, res)=>{
+router.get('/user', (req, res)=>{
     User.find()
         .then(user => {
             res.json(user);
