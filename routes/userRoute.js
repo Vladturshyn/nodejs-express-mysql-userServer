@@ -23,7 +23,7 @@ router.post('/user', (req, res)=>{
         .catch(err=> console.log(err));
 });
 
-router.delete('/user/:id', (req, res)=>{
+router.delete('/', (req, res)=>{
     User.findByIdAndDelete(req.params.id)
         .then(()=>{
             res.json({data: true})
