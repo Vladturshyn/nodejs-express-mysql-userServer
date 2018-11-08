@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 const user = require('./routes/rootRoute');
 
 // connect to db
- const db = "mongodb://vlad:turshyn1@ds115523.mlab.com:15523/devconnec";
+ const db = "*";
  mongoose
    .connect(db,{ useNewUrlParser: true })
    .then(()=>{console.log('connected to Mongo succsess')})
